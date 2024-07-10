@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.xy</groupId>
+        <artifactId>fl-assistant</artifactId>
+        <version>3.6.4</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>fl-assistant-common-log</module>
+        <module>fl-assistant-common-core</module>
+        <module>fl-assistant-common-redis</module>
+        <module>fl-assistant-common-seata</module>
+        <module>fl-assistant-common-swagger</module>
+        <module>fl-assistant-common-security</module>
+        <module>fl-assistant-common-sensitive</module>
+        <module>fl-assistant-common-datascope</module>
+        <module>fl-assistant-common-datasource</module>
+    </modules>
+
+    <artifactId>fl-assistant-common</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        fl-assistant-common通用模块
+    </description>
+
+</project>
