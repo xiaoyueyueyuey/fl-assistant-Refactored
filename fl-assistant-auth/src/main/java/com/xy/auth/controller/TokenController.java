@@ -1,11 +1,5 @@
 package com.xy.auth.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 import com.xy.auth.form.LoginBody;
 import com.xy.auth.form.RegisterBody;
 import com.xy.auth.service.SysLoginService;
@@ -16,6 +10,13 @@ import com.xy.common.security.auth.AuthUtil;
 import com.xy.common.security.service.TokenService;
 import com.xy.common.security.utils.SecurityUtils;
 import com.xy.system.api.model.LoginUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * token 控制
@@ -34,7 +35,7 @@ public class TokenController
     @PostMapping("login")
     public R<?> login(@RequestBody LoginBody form)
     {
-        // 用户登录
+        // 用户登录,这里只有账号密码登录，没有token一键登录，账号密码都是存在前端了，密码二次加密在前端，传过来解密了
         LoginUser userInfo = sysLoginService.login(form.getUsername(), form.getPassword());
         // 获取登录token
         return R.ok(tokenService.createToken(userInfo));

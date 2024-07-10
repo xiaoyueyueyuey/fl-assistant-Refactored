@@ -1,10 +1,11 @@
 package com.xy.gateway.config.properties;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 放行白名单配置
@@ -19,7 +20,7 @@ public class IgnoreWhiteProperties
     /**
      * 放行白名单配置，网关不校验此处的白名单
      */
-    private List<String> whites = new ArrayList<>();
+    private List<String> whites = new ArrayList<>(); //与nacos配置中心的配置项对应
 
     public List<String> getWhites()
     {

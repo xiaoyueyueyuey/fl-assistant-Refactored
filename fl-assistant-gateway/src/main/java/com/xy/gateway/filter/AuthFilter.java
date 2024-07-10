@@ -1,14 +1,5 @@
 package com.xy.gateway.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.gateway.filter.GatewayFilterChain;
-import org.springframework.cloud.gateway.filter.GlobalFilter;
-import org.springframework.core.Ordered;
-import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.stereotype.Component;
-import org.springframework.web.server.ServerWebExchange;
 import com.xy.common.core.constant.CacheConstants;
 import com.xy.common.core.constant.HttpStatus;
 import com.xy.common.core.constant.SecurityConstants;
@@ -19,10 +10,19 @@ import com.xy.common.core.utils.StringUtils;
 import com.xy.common.redis.service.RedisService;
 import com.xy.gateway.config.properties.IgnoreWhiteProperties;
 import io.jsonwebtoken.Claims;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.core.Ordered;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * 网关鉴权
+ * 网关鉴权，全局过滤器
  * 
  * @author ruoyi
  */
@@ -44,7 +44,6 @@ public class AuthFilter implements GlobalFilter, Ordered
     {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpRequest.Builder mutate = request.mutate();
-
         String url = request.getURI().getPath();
         // 跳过不需要验证的路径
         if (StringUtils.matches(url, ignoreWhite.getWhites()))
@@ -56,7 +55,7 @@ public class AuthFilter implements GlobalFilter, Ordered
         {
             return unauthorizedResponse(exchange, "令牌不能为空");
         }
-        Claims claims = JwtUtils.parseToken(token);
+        Claims claims = JwtUtils.parseToken(token);// 解析令牌
         if (claims == null)
         {
             return unauthorizedResponse(exchange, "令牌已过期或验证不正确！");
@@ -67,8 +66,8 @@ public class AuthFilter implements GlobalFilter, Ordered
         {
             return unauthorizedResponse(exchange, "登录状态已过期");
         }
-        String userid = JwtUtils.getUserId(claims);
-        String username = JwtUtils.getUserName(claims);
+        String userid = JwtUtils.getUserId(claims);// 用户ID
+        String username = JwtUtils.getUserName(claims);// 用户名
         if (StringUtils.isEmpty(userid) || StringUtils.isEmpty(username))
         {
             return unauthorizedResponse(exchange, "令牌验证失败");

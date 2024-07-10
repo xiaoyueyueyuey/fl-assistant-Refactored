@@ -1,13 +1,5 @@
 package com.xy.common.security.service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import javax.servlet.http.HttpServletRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import com.xy.common.core.constant.CacheConstants;
 import com.xy.common.core.constant.SecurityConstants;
 import com.xy.common.core.utils.JwtUtils;
@@ -18,6 +10,15 @@ import com.xy.common.core.utils.uuid.IdUtils;
 import com.xy.common.redis.service.RedisService;
 import com.xy.common.security.utils.SecurityUtils;
 import com.xy.system.api.model.LoginUser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * token验证处理
@@ -47,26 +48,26 @@ public class TokenService
      */
     public Map<String, Object> createToken(LoginUser loginUser)
     {
-        String token = IdUtils.fastUUID();
-        Long userId = loginUser.getSysUser().getUserId();
-        String userName = loginUser.getSysUser().getUserName();
-        loginUser.setToken(token);
-        loginUser.setUserid(userId);
-        loginUser.setUsername(userName);
-        loginUser.setIpaddr(IpUtils.getIpAddr());
-        refreshToken(loginUser);
+        String token = IdUtils.fastUUID();// 生成一个token
+        Long userId = loginUser.getSysUser().getUserId();// 获取用户id
+        String userName = loginUser.getSysUser().getUserName();// 获取用户名
+        loginUser.setToken(token);// 设置token
+        loginUser.setUserid(userId);// 设置用户id
+        loginUser.setUsername(userName);// 设置用户名
+        loginUser.setIpaddr(IpUtils.getIpAddr());// 设置ip地址
+        refreshToken(loginUser);// 刷新token，并且存储到redis中
 
         // Jwt存储信息
-        Map<String, Object> claimsMap = new HashMap<String, Object>();
+        Map<String, Object> claimsMap = new HashMap<String, Object>();// 存储信息
         claimsMap.put(SecurityConstants.USER_KEY, token);
-        claimsMap.put(SecurityConstants.DETAILS_USER_ID, userId);
-        claimsMap.put(SecurityConstants.DETAILS_USERNAME, userName);
+        claimsMap.put(SecurityConstants.DETAILS_USER_ID, userId);// 用户id
+        claimsMap.put(SecurityConstants.DETAILS_USERNAME, userName);// 用户名
 
         // 接口返回信息
-        Map<String, Object> rspMap = new HashMap<String, Object>();
-        rspMap.put("access_token", JwtUtils.createToken(claimsMap));
-        rspMap.put("expires_in", expireTime);
-        return rspMap;
+        Map<String, Object> rspMap = new HashMap<String, Object>();// 返回信息
+        rspMap.put("access_token", JwtUtils.createToken(claimsMap));//  加密token
+        rspMap.put("expires_in", expireTime);// 过期时间
+        return rspMap;//这里是把加密后的token和过期时间返回给前端
     }
 
     /**

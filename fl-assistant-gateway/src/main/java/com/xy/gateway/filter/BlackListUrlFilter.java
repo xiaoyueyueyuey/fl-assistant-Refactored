@@ -1,12 +1,13 @@
 package com.xy.gateway.filter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
+import com.xy.common.core.utils.ServletUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.stereotype.Component;
-import com.xy.common.core.utils.ServletUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * 黑名单过滤器
@@ -33,6 +34,7 @@ public class BlackListUrlFilter extends AbstractGatewayFilterFactory<BlackListUr
 
     public BlackListUrlFilter()
     {
+        // 传入配置类初始化
         super(Config.class);
     }
 

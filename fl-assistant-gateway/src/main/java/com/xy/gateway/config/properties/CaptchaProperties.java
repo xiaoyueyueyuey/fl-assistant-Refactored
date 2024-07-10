@@ -17,12 +17,12 @@ public class CaptchaProperties
     /**
      * 验证码开关
      */
-    private Boolean enabled;
+    private Boolean enabled; //与nacos配置中心的配置项对应
 
     /**
      * 验证码类型（math 数组计算 char 字符）
      */
-    private String type;
+    private String type; //与nacos配置中心的配置项对应
 
     public Boolean getEnabled()
     {

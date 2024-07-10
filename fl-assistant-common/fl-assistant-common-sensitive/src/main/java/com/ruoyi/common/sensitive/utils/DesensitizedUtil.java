@@ -1,4 +1,4 @@
-package com.xy.common.sensitive.utils;
+package com.ruoyi.common.sensitive.utils;
 
 import com.xy.common.core.utils.StringUtils;
 

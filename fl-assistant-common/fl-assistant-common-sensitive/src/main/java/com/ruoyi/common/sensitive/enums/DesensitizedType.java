@@ -1,7 +1,8 @@
-package com.xy.common.sensitive.enums;
+package com.ruoyi.common.sensitive.enums;
+
+import com.ruoyi.common.sensitive.utils.DesensitizedUtil;
 
 import java.util.function.Function;
-import com.xy.common.sensitive.utils.DesensitizedUtil;
 
 /**
  * 脱敏类型
