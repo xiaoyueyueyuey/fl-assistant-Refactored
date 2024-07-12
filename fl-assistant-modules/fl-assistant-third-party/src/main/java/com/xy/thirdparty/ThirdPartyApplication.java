@@ -1,26 +1,21 @@
-package com.xy.system;
+package com.xy.thirdparty;
 
 import com.xy.common.security.annotation.EnableCustomConfig;
 import com.xy.common.security.annotation.EnableRyFeignClients;
 import com.xy.common.swagger.annotation.EnableCustomSwagger2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-/**
- * 系统模块
- * 
- * @author ruoyi
- */
+
 @EnableCustomConfig
 @EnableCustomSwagger2
-@EnableRyFeignClients //openFeign启动
-@SpringBootApplication
-public class RuoYiSystemApplication
-{
-    public static void main(String[] args)
-    {
-        SpringApplication.run(RuoYiSystemApplication.class, args);
-        System.out.println("(♥◠‿◠)ﾉﾞ  系统模块启动成功    ლ(´ڡ`ლ)ﾞ  \n" +
+@EnableRyFeignClients
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+public class ThirdPartyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ThirdPartyApplication.class, args);
+        System.out.println("(♥◠‿◠)ﾉﾞ  第三方模块启动成功   ლ(´ڡ`ლ)ﾞ  \n" +
                 " .-------.       ____     __        \n" +
                 " |  _ _   \\      \\   \\   /  /    \n" +
                 " | ( ' )  |       \\  _. /  '       \n" +
@@ -31,4 +26,6 @@ public class RuoYiSystemApplication
                 " |  |  \\    /  \\      /           \n" +
                 " ''-'   `'-'    `-..-'              ");
     }
+
+
 }

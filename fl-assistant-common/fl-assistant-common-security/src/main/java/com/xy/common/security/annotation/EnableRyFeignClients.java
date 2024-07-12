@@ -1,6 +1,7 @@
 package com.xy.common.security.annotation;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
+
 import java.lang.annotation.*;
 
 /**
@@ -17,7 +18,7 @@ public @interface EnableRyFeignClients
 {
     String[] value() default {};
 
-    String[] basePackages() default { "com.xy" };
+    String[] basePackages() default {"com.xy"};//扫描的根包，防止扫不到需要的包
 
     Class<?>[] basePackageClasses() default {};
 

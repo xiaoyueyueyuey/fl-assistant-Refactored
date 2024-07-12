@@ -21,4 +21,10 @@ public class ServiceNameConstants
      * 文件服务的serviceid
      */
     public static final String FILE_SERVICE = "fl-assistant-file";
+
+    /**
+     * 第三方服务的serviceid
+     */
+    public static final String THIRD_PART_SERVICE = "fl-assistant-third-part";
+
 }

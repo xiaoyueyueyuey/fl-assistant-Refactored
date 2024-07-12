@@ -1,13 +1,13 @@
 package com.xy.auth.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import com.xy.common.core.constant.Constants;
 import com.xy.common.core.constant.SecurityConstants;
 import com.xy.common.core.utils.StringUtils;
 import com.xy.common.core.utils.ip.IpUtils;
 import com.xy.system.api.RemoteLogService;
 import com.xy.system.api.domain.SysLogininfor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * 记录日志方法
@@ -18,8 +18,7 @@ import com.xy.system.api.domain.SysLogininfor;
 public class SysRecordLogService
 {
     @Autowired
-    private RemoteLogService remoteLogService;
-
+    private RemoteLogService remoteLogService;//远程调用系统log日志
     /**
      * 记录登录信息
      * 
@@ -43,6 +42,6 @@ public class SysRecordLogService
         {
             logininfor.setStatus(Constants.LOGIN_FAIL_STATUS);
         }
-        remoteLogService.saveLogininfor(logininfor, SecurityConstants.INNER);
+        remoteLogService.saveLogininfor(logininfor, SecurityConstants.INNER);//内部调用
     }
 }

@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <lombok.version>1.18.26</lombok.version>
         <spring-boot.version>2.7.18</spring-boot.version>
         <spring-cloud.version>2021.0.8</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.0.5.0</spring-cloud-alibaba.version>
@@ -36,6 +37,8 @@
         <minio.version>8.2.2</minio.version>
         <poi.version>4.1.2</poi.version>
         <transmittable-thread-local.version>2.14.4</transmittable-thread-local.version>
+        <mybatis-plus.version>3.5.4</mybatis-plus.version>
+
     </properties>
 
     <!-- 依赖声明 -->
@@ -221,6 +224,20 @@
                 <artifactId>fl-assistant-api-system</artifactId>
                 <version>${fl-assistant.version}</version>
             </dependency>
+            <!--lombok-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <!-- mybatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!--            https://blog.csdn.net/qq_60870118/article/details/139045743 mybatis-plus更换文章-->
 
         </dependencies>
     </dependencyManagement>
@@ -255,15 +272,6 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-            <!--热部署-->
-            <!--            <plugin>-->
-            <!--                <groupId>org.springframework.boot</groupId>-->
-            <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-            <!--                <configuration>-->
-            <!--                    <fork>true</fork>-->
-            <!--                    <addResources>true</addResources>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
         </plugins>
         <pluginManagement>
             <plugins>
@@ -282,7 +290,6 @@
             </plugins>
         </pluginManagement>
     </build>
-
     <repositories>
         <repository>
             <id>public</id>

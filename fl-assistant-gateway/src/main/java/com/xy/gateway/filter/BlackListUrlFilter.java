@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * 黑名单过滤器
+ * 黑名单过滤器，这个是全局过滤器吗？
+ * Blacklist filter, is this a global filter?
+ *
  * 
  * @author ruoyi
  */

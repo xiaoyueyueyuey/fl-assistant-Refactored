@@ -1,22 +1,5 @@
 package com.xy.system.controller;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.lang3.ArrayUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import com.xy.common.core.domain.R;
 import com.xy.common.core.utils.StringUtils;
 import com.xy.common.core.utils.poi.ExcelUtil;
@@ -32,12 +15,18 @@ import com.xy.system.api.domain.SysDept;
 import com.xy.system.api.domain.SysRole;
 import com.xy.system.api.domain.SysUser;
 import com.xy.system.api.model.LoginUser;
-import com.xy.system.service.ISysConfigService;
-import com.xy.system.service.ISysDeptService;
-import com.xy.system.service.ISysPermissionService;
-import com.xy.system.service.ISysPostService;
-import com.xy.system.service.ISysRoleService;
-import com.xy.system.service.ISysUserService;
+import com.xy.system.service.*;
+import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * 用户信息
@@ -110,7 +99,7 @@ public class SysUserController extends BaseController
     /**
      * 获取当前用户信息
      */
-    @InnerAuth
+    @InnerAuth//内部调用
     @GetMapping("/info/{username}")
     public R<LoginUser> info(@PathVariable("username") String username)
     {

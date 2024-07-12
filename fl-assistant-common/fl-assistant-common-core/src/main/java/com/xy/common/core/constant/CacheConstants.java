@@ -28,6 +28,12 @@ public class CacheConstants
     public final static long PASSWORD_LOCK_TIME = 10;
 
     /**
+     * 短信验证码有效期，默认5（分钟）
+     */
+    public final static long SMS_EXPIRATION = 5;
+
+
+    /**
      * 权限缓存前缀
      */
     public final static String LOGIN_TOKEN_KEY = "login_tokens:";
@@ -56,4 +62,9 @@ public class CacheConstants
      * 登录IP黑名单 cache key
      */
     public static final String SYS_LOGIN_BLACKIPLIST = SYS_CONFIG_KEY + "sys.login.blackIPList";
+//-------------------------------------自定义-----------------------------------------------------
+    /**
+     * 短信验证码
+     */
+    public static final String SMS_CODE_LOGIN_PREFIX = "sms:login:code:";
 }

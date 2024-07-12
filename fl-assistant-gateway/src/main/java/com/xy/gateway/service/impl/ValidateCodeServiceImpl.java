@@ -48,7 +48,7 @@ public class ValidateCodeServiceImpl implements ValidateCodeService
     public AjaxResult createCaptcha() throws IOException, CaptchaException
     {
         AjaxResult ajax = AjaxResult.success();
-        boolean captchaEnabled = captchaProperties.getEnabled();//查看验证码是否启用，启动再创建
+        boolean captchaEnabled = captchaProperties.getEnabled();//查看验证码是否启用，在nacos获取配置，启动再创建
         ajax.put("captchaEnabled", captchaEnabled);//将验证码是否启用的信息放入ajax结果中
         if (!captchaEnabled)//如果验证码未启用，直接返回
         {

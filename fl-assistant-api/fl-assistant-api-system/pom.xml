@@ -16,7 +16,6 @@
     </description>
 
     <dependencies>
-		
         <!-- RuoYi Common Core-->
         <dependency>
             <groupId>com.xy</groupId>

@@ -1,3 +1,4 @@
+#自动装配，供其他服务远程调用，就是openfeign的服务调用
 com.xy.system.api.factory.RemoteUserFallbackFactory
 com.xy.system.api.factory.RemoteLogFallbackFactory
 com.xy.system.api.factory.RemoteFileFallbackFactory

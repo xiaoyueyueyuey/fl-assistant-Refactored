@@ -13,6 +13,7 @@
         <module>fl-assistant-gen</module>
         <module>fl-assistant-job</module>
         <module>fl-assistant-file</module>
+        <module>fl-assistant-third-party</module>
     </modules>
 
     <artifactId>fl-assistant-modules</artifactId>
